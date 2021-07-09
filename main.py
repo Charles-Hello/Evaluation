@@ -72,6 +72,7 @@ def classes(entrance):
     for _ in range(1, 16):
         for m in range(1, 16):
             try:
+                # 评价状态框 xpath
                 # //*[@id="app"]/div/div[1]/div/div[2]/div[1]/div/div/div/div[1]/div[3]/span[2]
                 # //*[@id="app"]/div/div[1]/div/div[2]/div[1]/div/div/div/div[2]/div[3]/span[2]
                 XPATH = f'//*[@id="app"]/div/div[1]/div/div[2]/div[1]/div/div/div/div[{m}]/div[3]/span[2]'
@@ -98,6 +99,7 @@ def teachers(entrance):
     for _ in range(1, 26):
         for m in range(1, 26):
             try:
+                # 评价状态框 xpath
                 # //*[@id="app"]/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div[2]/span
                 # //*[@id="app"]/div/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div[2]/span
                 XPATH = f'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div/div/div/div[{m}]/div[2]/span'
@@ -121,6 +123,7 @@ def myself(entrance):
     """
     XPATH = f'//*[@id="app"]/div/div[1]/div/div[1]/div/div/div/div[{str(entrance)}]/span'
     WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, XPATH))).click()
+    # 评价状态框 xpath
     # //*[@id="app"]/div/div[1]/div/div[2]/div[3]/div/div/div/div[1]/div[2]/span[2]
     XPATH = '//*[@id="app"]/div/div[1]/div/div[2]/div[3]/div/div/div/div[1]/div[2]/span[2]'
     element = WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, XPATH)))
@@ -143,6 +146,7 @@ def roommates(entrance):
     for _ in range(1, 16):
         for m in range(1, 16):
             try:
+                # 评价状态框 xpath
                 # //*[@id="app"]/div/div[1]/div/div[2]/div[4]/div/div/div/div[1]/div[3]/span[2]
                 # //*[@id="app"]/div/div[1]/div/div[2]/div[4]/div/div/div/div[2]/div[3]/span[2]
                 XPATH =  f'//*[@id="app"]/div/div[1]/div/div[2]/div[4]/div/div/div/div[{m}]/div[3]/span[2]'
