@@ -28,7 +28,7 @@ def login(username, psw):
         driver.find_element_by_id('captcha').send_keys(input("输入算数答案："))
         element.click()
         WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.NAME, '我要评价')))
-        os.system('taskkill /IM Microsoft.Photos.exe /F')
+        # os.system('taskkill /IM Microsoft.Photos.exe /F')
     elif len(username) == 11:
         print("登陆方式：手机号登录")
         XPATH = '//*[@id="root"]/span/div[4]/div/div/div[3]/span' # 短信登陆按钮
@@ -51,7 +51,7 @@ def login(username, psw):
         # QR(username, r'E:\image.jpg')
         WebDriverWait(driver, 120, 0.5).until(EC.presence_of_element_located((By.NAME, '我要评价')))
         driver.set_window_size(size['width'], size['height'])
-        os.system('taskkill /IM Microsoft.Photos.exe /F')
+        # os.system('taskkill /IM Microsoft.Photos.exe /F')
     else:
         driver.quit()
         print("登陆方式错误，请检查输入的账号是否为学号、手机号码，且是否正确")
@@ -276,7 +276,6 @@ if __name__ == "__main__":
     options.add_argument('--disable-gpu') # 禁用GPU硬件加速
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--ignore-certificate-errors')  # 禁用扩展插件并实现窗口最大化
-    options.add_argument('--blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度
+    # options.add_argument('--blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度
     driver = webdriver.Chrome(options=options)
     main("", "")
-
