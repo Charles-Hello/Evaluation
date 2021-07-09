@@ -275,7 +275,7 @@ if __name__ == "__main__":
     options.add_argument('--disable-extensions')
     options.add_argument('--disable-gpu') # 禁用GPU硬件加速
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--ignore-certificate-errors')  # 禁用扩展插件并实现窗口最大化
+    # options.add_argument('--ignore-certificate-errors')  # 禁用扩展插件并实现窗口最大化
     # options.add_argument('--blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度
     driver = webdriver.Chrome(options=options)
     main("", "")
