@@ -22,7 +22,7 @@ def login(username, psw):
         print("登陆方式：学号登陆")
         XPATH = '//*[@id="root"]/span/div[4]/div/div/div[1]/div/div/form/div[5]/button[1]' # 登录按钮
         element = WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, XPATH)))
-        QR(username, r'E:\image.jpg')
+        # QR(username, r'E:\image.jpg')
         driver.find_element_by_id('userName').send_keys(username)
         driver.find_element_by_id('password').send_keys(psw)
         driver.find_element_by_id('captcha').send_keys(input("输入算数答案："))
@@ -44,13 +44,13 @@ def login(username, psw):
         WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.NAME, '我要评价')))
     elif len(username) == 0:
         print("登陆方式：二维码登录")
-        # size = driver.get_window_size()
+        size = driver.get_window_size()
         driver.maximize_window()
         XPATH = '//*[@id="root"]/span/div[4]/div[2]/div/ul/li[2]' # 二维码登录按钮
         WebDriverWait(driver, 10, 0.5).until(EC.presence_of_element_located((By.XPATH, XPATH))).click()
-        QR(username, r'E:\image.jpg')
+        # QR(username, r'E:\image.jpg')
         WebDriverWait(driver, 120, 0.5).until(EC.presence_of_element_located((By.NAME, '我要评价')))
-        # driver.set_window_size(size['width'], size['height'])
+        driver.set_window_size(size['width'], size['height'])
         os.system('taskkill /IM Microsoft.Photos.exe /F')
     else:
         driver.quit()
