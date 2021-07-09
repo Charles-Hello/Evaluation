@@ -18,8 +18,7 @@
 # 仓库目录说明
 ```
 Evaluation/           # Evaluation 仓库
-  |-- python            # 主文件
-  |-- temlate           # 模板文件
+  |-- main.py           # 主文件
   `-- README.md         # 仓库说明
 ```
 # 版权
