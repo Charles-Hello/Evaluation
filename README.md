@@ -1,14 +1,17 @@
 <h1 align="center">
-  昆医大评价系统(半)自动评价
+  评价系统(半)自动评价
   <br>
   Author: chiupam
 </h1>
 
+# 简介
+适用于 `昆医大` 的课程评价系统的自动评价。
+> 脚本对每项选项的选择都不代表您真实表达，如果您想选择您认可的选项，请勿使用此脚本。
 # 目录
+- [简介](#简介)
 - [目录](#目录)
 - [仓库目录说明](#仓库目录说明)
 - [版权](#版权)
-- [温馨提示](#温馨提示)
 - [待做](#待做)
 - [软件及驱动要求](#软件及驱动要求)
 - [免责声明](#免责声明)
@@ -21,8 +24,6 @@ Evaluation/           # Evaluation 仓库
 ```
 # 版权
 - 未经本人同意，仓库内所有资源文件，禁止任何公众号、自媒体、开发者进行任何形式的转载、发布、搬运。
-# 温馨提示
-- 脚本对每项选项的选择都不代表您真实表达，如果您想选择您认可的选项，请勿使用此脚本。
 # 待做
 - [x] 优化
   - [x] 执行时间过长
@@ -37,7 +38,7 @@ Evaluation/           # Evaluation 仓库
 # 软件及驱动要求
 |需要安装|备注|
 |:-------|:-------|
-|[Python3](https://www.python.org/downloads/)|仅支持 3.x.x 以上版本|
+|[Python3](https://www.python.org/downloads/)|仅支持 3.4.x 以上版本|
 |[selenium](http://www.testclass.net/selenium_python/install-selenium)|在 Python 内安装|
 |[chrome](https://www.google.com/intl/zh-CN/chrome/)|即谷歌浏览器|
 |[chromedriver](https://chromedriver.chromium.org/)|需要与 chrome 版本对应|
