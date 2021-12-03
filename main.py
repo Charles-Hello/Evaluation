@@ -8,6 +8,7 @@ import os
 import re
 import sys
 import requests
+import time
 
 from os import remove
 from hashlib import md5
@@ -46,21 +47,25 @@ def login(username, psw):
         print("登陆方式：学号登陆")
         XPATH = '//*[@id="root"]/span/div[4]/div/div/div[1]/div/div/form/div[5]/button[1]'  # 登录按钮
         element = wait(driver, 10, 0.5).until(located((by.XPATH, XPATH)))
-        driver.find_element_by_id('userName').send_keys(username)
-        driver.find_element_by_id('password').send_keys(psw)
-        XPATH = '//*[@id="root"]/span/div[4]/div/div/div[1]/div/div/form/div[4]/div/div/span/div/div[2]/div/img'
-        screen = driver.find_element_by_xpath(XPATH)
-        driver.save_screenshot(r'./code.png')
-        left = screen.location['x']
-        top = screen.location['y']
-        right = left + screen.size['width']
-        bottom = top + screen.size['height']
-        picture = image.open(r'./code.png')
-        picture = picture.crop((left, top, right, bottom))
-        picture.save(r'./code.png')
-        code = verification("./code.png", "6001")
-        driver.find_element_by_id('captcha').send_keys(code)
-        remove("./code.png")
+        driver.find_element(by.ID, 'userName').send_keys(username)
+        driver.find_element(by.ID, 'password').send_keys(psw)
+        if len(cjy_username) != 0:
+            XPATH = '//*[@id="root"]/span/div[4]/div/div/div[1]/div/div/form/div[4]/div/div/span/div/div[2]/div/img'
+            screen = driver.find_element(by.XPATH, XPATH)
+            driver.save_screenshot(r'./code.png')
+            left = screen.location['x']
+            top = screen.location['y']
+            right = left + screen.size['width']
+            bottom = top + screen.size['height']
+            picture = image.open(r'./code.png')
+            picture = picture.crop((left, top, right, bottom))
+            picture.save(r'./code.png')
+            code = verification("./code.png", "6001")
+            driver.find_element(by.ID, 'captcha').send_keys(code)
+            remove("./code.png")
+        else:
+            code = input("请输入验证码：")
+            driver.find_element(by.ID, 'captcha').send_keys(code)
         element.click()
         wait(driver, 10, 0.5).until(located((by.NAME, '我要评价')))
     elif len(username) == 11:
@@ -69,11 +74,11 @@ def login(username, psw):
         wait(driver, 10, 0.5).until(located((by.XPATH, XPATH))).click()
         XPATH = '//*[@id="root"]/span/div[4]/div/div/div[1]/div/div/form/div[4]/div/div/span/button'  # 登录按钮
         element = wait(driver, 10, 0.5).until(located((by.XPATH, XPATH)))
-        driver.find_element_by_id('mobile').send_keys(username)
-        driver.find_element_by_class_name('index-send-2UVkM').click()
+        driver.find_element(by.ID, 'mobile').send_keys(username)
+        driver.find_element(by.CLASS_NAME, 'index-send-2UVkM').click()
         XPATH = '/html/body/div[5]/div/div[2]/div/div[2]/div/div/div[2]/button'  # 警告窗口按钮
         wait(driver, 10, 0.5).until(located((by.XPATH, XPATH))).click()
-        driver.find_element_by_id('smsCode').send_keys(input("输入验证码："))
+        driver.find_element(by.ID, 'smsCode').send_keys(input("输入验证码："))
         element.click()
         wait(driver, 10, 0.5).until(located((by.NAME, '我要评价')))
     elif len(username) == 0:
@@ -209,7 +214,7 @@ def sumbit(element, num):
         element = wait(driver, 10, 0.5).until(located((by.XPATH, XPATH)))
         driver.execute_script("arguments[0].scrollIntoView();", element)  # 拖动到可见的元素去
         element.click()
-    XPATH = '//*[@id="app"]/div/div[1]/div[1]/div/div/div[3]/div[1]/button[2]'  # 提交按钮
+    XPATH = '/html/body/div/div/div[1]/div[1]/div/div/div[3]/div[1]/button[2]'  # 提交按钮
     wait(driver, 10, 0.5).until(located((by.XPATH, XPATH))).click()
     XPATH = '/html/body/div[3]/div[3]/button[2]'  # 确定按钮
     wait(driver, 10, 0.5).until(located((by.XPATH, XPATH))).click()
@@ -319,4 +324,4 @@ if __name__ == "__main__":
     cjy_username = ""
     cjy_password = ""
     cjy_softid = ""
-    main("", "")
+    main("201820017", "Ben998032@")
