@@ -209,13 +209,15 @@ def sumbit(element, num):
     :return: None
     """
     element.click()
+    XPATH = '/html/body/div/div/div[1]/div[1]/div/div/div[3]/div[1]/button[2]'  # 提交按钮
+    button = wait(driver, 10, 0.5).until(located((by.XPATH, XPATH)))
     for n in range(1, int(num) + 1):
         XPATH = f'//*[@id="app"]/div/div[1]/div[2]/div/div[{n}]/div[2]/div[1]/div/i'
         element = wait(driver, 10, 0.5).until(located((by.XPATH, XPATH)))
         driver.execute_script("arguments[0].scrollIntoView();", element)  # 拖动到可见的元素去
         element.click()
-    XPATH = '/html/body/div/div/div[1]/div[1]/div/div/div[3]/div[1]/button[2]'  # 提交按钮
-    wait(driver, 10, 0.5).until(located((by.XPATH, XPATH))).click()
+    driver.execute_script("arguments[0].scrollIntoView();", button)  # 拖动到可见的元素去
+    button.click()
     XPATH = '/html/body/div[3]/div[3]/button[2]'  # 确定按钮
     wait(driver, 10, 0.5).until(located((by.XPATH, XPATH))).click()
 
@@ -324,4 +326,4 @@ if __name__ == "__main__":
     cjy_username = ""
     cjy_password = ""
     cjy_softid = ""
-    main("201820017", "Ben998032@")
+    main("", "")
