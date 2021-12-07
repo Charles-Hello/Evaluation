@@ -209,7 +209,7 @@ def sumbit(element, num):
     :return: None
     """
     element.click()
-    XPATH = '//*[@id="app"]/div/div[1]/div[1]/div/div/div[3]/div[1]/button[2]'  # 提交按钮
+    XPATH = '//*[@id="app"]/div/div[1]/div[1]/div/div/div[3]/div[1]/button[2]/div/span'  # 提交按钮
     button = wait(driver, 10, 0.5).until(located((by.XPATH, XPATH)))
     for n in range(1, int(num) + 1):
         XPATH = f'//*[@id="app"]/div/div[1]/div[2]/div/div[{n}]/div[2]/div[1]/div/i'
